@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+ {% block css %}
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/responsive.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'accounts/stylesheets/auth_login.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Menu -->
+<div class="menu">
+	<div class="menu_container text-right">
+		<div class="menu_close">close</div>
+		<nav class="menu_nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="listings.html">Listings</a></li>
+				<li><a href="blog.html">News</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		<div class="menu_link">
+			<a href="#">+Add Listing</a>
+		</div>
+	</div>
+</div>
+<!--<div class="super_container">-->
+	{% include 'movies/_nav.html' %}
+<div class="container">
+    <div style="text-align:center"><img class="mt-2" src="https://i.ibb.co/1vh49st/register-297979.png" alt="resim" style="width:20%"></div>
+        <div class="d-flex justify-content-center">
+            <div class="card2">
+                <div class="card-header">
+                    <h2 class="text-center text-light"></h2>
+                </div>
+                <div class="card-header">
+                    <h2 class="text-center text-light">Sign Up</h2>
+                </div>
+                <div class="card-body p-2">
+                    <form class="needs-validation" action="" method="POST">
+                        {% csrf_token %}
+                         <!--username -->
+                        <div class="d-flex justify-content-center input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class='fas fa-user-graduate ml-2' style='font-size:22px'></i></span>
+                                <input type="text" class="form-control" placeholder="ID" id="id_username" name="username" style="width: 325px" required>                        
+                            </div>         
+                        </div>
+                        
+                      
+                        <!-- email -->
+                        <div class="d-flex justify-content-center input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class='fa fa-envelope ml-2' style='font-size:26px'></i></span>
+                                <input type="text" class="form-control" placeholder="E-mail" id="id_email" name="email" style="width: 200px" required> 
+                                <div class="input-group-append">
+                                    <span class="input-group-text  text-light" style="width: 125px; font-size: 15px; font-weight: 500">@email.com</span>
+                                </div>     
+                            </div>       
+                        </div>
+                       
+                        <!-- password1 -->
+                        <div class="d-flex justify-content-center input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class='fa fa-key ml-2' style='font-size:20px'></i></span>
+                                <input type="password" class="form-control" placeholder="비밀번호" id="tbSifre" name="password1" style="width: 325px" required>
+                            </div>         
+                        </div>
+                        
+                        <!-- password2 -->
+                        <div class="d-flex justify-content-center input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class='fa fa-key ml-2' style='font-size:20px'></i></span>
+                                <input type="password" class="form-control" placeholder="비밀번호 확인" id="tbTekrarSifre" name="password2" style="width: 325px" required>                 
+                            </div>         
+                        </div>
+                        
+                        <!-- checkbox -->
+                        <div class="d-flex justify-content-center row align-items-center remember">
+                            <div class="form-group form-check-inline mx-4">
+                                
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="cbKosul"    required>
+                                    <a href="" class="links" data-toggle="modal" data-target=".bd-example-modal-xl">I agree to this terms.</a>
+                                    <div class="invalid-tooltip">*You cannot proceed without accepting the terms and conditions.</div>
+                                </label>
+                            </div>
+                        </div>      
+                        
+                        
+                        <div class="card-footer p-2">
+                            <div class="d-flex justify-content-center links">
+                                <button type="submit" id="btnKayıtOl" class="btn login_btn text-light btn-block" style=" font-weight: 600;">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div> 
+            </div> 
+        </div>          
+    </div>
+    
+</div>
+
+
+{% include 'accounts/_modal.html' %}
+
+
+{% include 'movies/_footer.html' %}
+<!--</div>-->
+{% endblock %}
+

@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+{% block css %}
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/stylesheets/profile.css' %}">
+
+{% endblock %}
+{% block content %}
+<!-- Menu -->
+<div class="menu">
+	<div class="menu_container text-right">
+		<div class="menu_close">close</div>
+		<nav class="menu_nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="listings.html">Listings</a></li>
+				<li><a href="blog.html">News</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		<div class="menu_link">
+			<a href="#">+Add Listing</a>
+		</div>
+	</div>
+</div>
+<!--<div class="super_container">-->
+{% include 'movies/_nav.html' %}
+
+
+    <body class="profile-page sidebar-collapse">
+
+        <div class="wrapper">
+            <div class="page-header clear-filter" filter-color="orange">
+                <div class="page-header-image" data-parallax="true" style="background-image:url('https://images.unsplash.com/photo-1476984251899-8d7fdfc5c92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3700&q=80');">
+                
+                </div>
+                <div class="container">
+                    <div class="photo-container">
+                        <img src="https://s.gravatar.com/avatar/{{ gravatar_url }}?s=200" alt="gravatar">
+                    </div> 
+                    <h3 class="title text-white">{{ people.username }}</h3>
+                    <p class="category1 text-white text-center">{{ people.profile.nickname }}</p>
+                    <div class="content">
+                        <div class="social-description">
+                            <h2 class="text-white">{{ people.followings.count }}</h2>
+                            <p>Followings</p>
+                        </div>
+                        <div class="social-description">
+                            <h2 class="text-white">{{ people.followers.count }}</h2>
+                            <p>Followers</p>
+                        </div>
+                        <div class="social-description">
+                            <h2 class="text-white">{{ people.comment_set.count }}</h2>
+                            <p>Comment</p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="section">
+                <div class="container">
+                    <div class="button-container">
+                        
+                        {% if user != people %}
+                            {% if user in people.followers.all %}
+                                <a href="{% url 'accounts:follow' people.pk %}" class="btn btn-danger btn-round btn-lg follow-button">UnFollow</a>
+                            {% else %}
+                                <a href="{% url 'accounts:follow' people.pk %}" class="btn btn-primary btn-round btn-lg follow-button">Follow</a>
+                            {% endif%}
+                        {% endif %}
+                        
+                        <a href="{% url 'accounts:update' %}" class="btn btn-default btn-round btn-lg btn-icon " style="text-align:center" rel="tooltip" title="Follow me on Twitter">
+            
+                <i class="far fa-id-card fa-2x fa-circle mt-3"></i>
+                
+          </a>
+                        <a href="{% url 'accounts:profile_update' %}" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+            
+            <i class="fas fa-edit fa-2x fa-circle mt-auto"></i>
+          </a>
+          <a href="{% url 'accounts:password' %}" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+            <i class="fas fa-key fa-2x fa-circle my-auto"></i>
+            
+          </a>
+          
+          
+          
+        
+                    </div>
+                    <h3 class="title">About me</h3>
+                    <h5 class="description">{{ people.profile.introduction }}</h5>
+                    
+                    
+                    
+                    <!-- 개인 추천 -->
+                    <div class="row">
+                        <div class="col-md-6 ml-auto mr-auto">
+                            <h4 class="title text-center">My Activity</h4>
+                            
+                            <!-- 활동에 따른 결과 -->
+                            <div class="nav-align-center">
+                                <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
+                                    
+                                    <!-- 코멘트 달은 영화 목록 -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#profile" role="tablist">
+                                            <i class="now-ui-icons design_image"></i>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- 팔로워들의 평점기준 영화 목록 -->
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#home" role="tablist">
+                                            <i class="now-ui-icons location_world"></i>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- 팔로윙들의 평점기준 영화목록 -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#messages" role="tablist">
+                                            <i class="now-ui-icons sport_user-run"></i>
+                                        </a>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        <!-- Tab panes -->
+                        <div class="tab-content gallery">
+                            
+                            <!-- 코멘트 달은 영화 목록 -->
+                            <div class="tab-pane active" id="home" role="tabpanel">
+                                <div class="col-md-10 ml-auto mr-auto">
+                                    <div class="collections">
+                                        {% if movie_genre %}
+                                            <h3 style="text-align: center;">{{ people.username }} 님께 <b>{{ movie_genre }}</b> 영화를 추천합니다.</h3>
+                                                <div class="row">
+                                                {% for recommend_movie in recommend_movies %}
+                                                <div class="col-md-6">
+                                                    <a href="{% url 'movies:detail' recommend_movie.pk %}"><img src="{{ recommend_movie.poster_path }}" alt="" class="img-raised"></a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            <div class="d-flex justify-content-center">
+                        
+                                                <h3>{{ people.username }} 님께 인기 영화를 추천합니다.</h3>
+                                            </div>
+                                            <div class="row">
+                                                {% for recommend_movie in recommend_movies %}
+                                                <div class="col-md-6">
+                                                    <a href="{% url 'movies:detail' recommend_movie.pk %}"><img src="{{ recommend_movie.poster_path }}" alt="" class="img-raised"></a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+
+                                        {% endif %}
+                                        <!--<div class="col-md-6">-->
+                                        <!--    <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bg1.jpg" alt="" class="img-raised">-->
+                                        <!--    <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bg3.jpg" alt="" class="img-raised">-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-6">-->
+                                        <!--    <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bg8.jpg" alt="" class="img-raised">-->
+                                        <!--    <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bg7.jpg" alt="" class="img-raised">-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 팔로워들의 평점기준 영화 목록 -->
+                            <div class="tab-pane" id="profile" role="tabpanel">
+                                <div class="col-md-10 ml-auto mr-auto">
+                                    <div class="collections">
+                                        
+                                        {% if follower_movies %}
+                                        
+                                            <h3 style="text-align: center;">{{ people.username }} 님의 <b>Follower</b>들은 다음과 같은 영화를 추천합니다.</h3>
+                                            <div class="row">
+                                                {% for follower_movie in follower_movies %}
+                                                <div class="col-md-6">
+                                                    <a href="{% url 'movies:detail' follower_movie.movie.pk %}"><img src="{{ follower_movie.movie.poster_path }}" alt="" class="img-raised"></a>
+    
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            <div class="d-flex justify-content-center">
+                        
+                                                <h3>{{ people.username }} 님께 인기 영화를 추천합니다.</h3>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                {% for recommend_movie in recommend_movies %}
+                                                <div class="col-md-6">
+                                                    <a href="{% url 'movies:detail' recommend_movie.pk %}"><img src="{{ recommend_movie.poster_path }}" alt="" class="img-raised"></a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+
+                                        {% endif %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 팔로윙들의 평점기준 영화목록 -->
+                            <div class="tab-pane" id="messages" role="tabpanel">
+                                <div class="col-md-10 ml-auto mr-auto">
+                                    <div class="collections">
+                                        {% if following_movies %}
+                                            <h3 style="text-align: center;">{{ people.username }} 님의 <b>Followings</b>들은 다음과 같은 영화를 추천합니다.</h3>
+                                            <div class="row">
+                                                {% for following_movie in following_movies %}
+                                                <div class="col-md-6">
+                                                    <a href="{% url 'movies:detail' following_movie.movie.pk %}"><img src="{{ following_movie.movie.poster_path }}" alt="" class="img-raised"></a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            <div class="d-flex justify-content-center">
+                        
+                                                <h3>{{ people.username }} 님께 인기 영화를 추천합니다.</h3>
+                                            </div>
+                                            <div class="row">
+                                                {% for recommend_movie in recommend_movies %}
+                                                <div class="col-md-6">
+                                                    <a href="{% url 'movies:detail' recommend_movie.pk %}"><img src="{{ recommend_movie.poster_path }}" alt="" class="img-raised"></a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                
+            {% include 'movies/_footer.html' %}
+            
+        </div>
+{% endblock %}
+{% block script %}
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+       
+        <script>
+        // 좋아요 버튼들을 모두 선택
+        const followButtons = document.querySelectorAll('.follow-button')
+        followButtons.forEach( button => {
+            // 각각의 버튼에 클릭 이벤트 설정
+            button.addEventListener('click', function (event) {
+                // console.log(event)
+                // 좋아요 버튼의 해당 게시글 id
+                const movieId = event.target.dataset.id
+                // 좋아요 요청 전송
+                axios.get(`/accounts/${movieId}/follow/`)
+                    
+                    .then( response => {
+                        document.querySelector(`#follow-count-${movieId}`).innerText = response.data.count
+                        // 좋아요가 눌린 상태인지 아닌지
+                        // 눌린상태에 따라 아이콘 class 변경
+                        if (response.data.liked) {
+                            event.target.classList.remove('btn-danger')
+                            event.target.classList.add('btn-primary')
+                        } else {
+                            event.target.classList.remove('btn-primary')
+                            event.target.classList.add('btn-danger')
+                        }
+                    })
+            })
+        })
+        </script>
+	
+<!--</div>-->
+{% endblock %}

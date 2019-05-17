@@ -1,0 +1,376 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/listing.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/listing_responsive.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR&amp;subset=korean" rel="stylesheet">
+<style>
+	.korean {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	.koreantitle {
+		font-family: 'Do Hyeon', sans-serif;
+	}
+</style>
+{% endblock %}
+<!-- Menu -->
+
+{% block content %}
+<!-- Menu -->
+<div class="menu">
+	<div class="menu_container text-right">
+		<div class="menu_close">close</div>
+		<nav class="menu_nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="listings.html">Listings</a></li>
+				<li><a href="blog.html">News</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		<div class="menu_link">
+			<a href="#">+Add Listing</a>
+		</div>
+	</div>
+</div>
+<div class="super_container">
+	{% include 'movies/_nav.html' %}
+
+	<div class="super_container_inner">
+		<div class="super_overlay"></div>
+
+		<!-- Home -->
+
+		<div class="home">
+			<div class="container fill_height">
+				<div class="row fill_height">
+					<div class="col fill_height">
+						<div class="listing_image">
+							<div class="listing_background_image_left">
+								<div class="background_image" style="background-image:url({{ movie.backdrop_path }})"></div>
+							</div>
+							<div class="listing_background_image_right">
+								<div class="background_image" style="background-image:url({{ movie.backdrop_path }})"></div>
+							</div>
+							<div class="background_image" style="background-image:url({{ movie.backdrop_path }})"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="home_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="home_content">
+								<div class="listing_title"><h1 class="koreantitle">{{ movie }}</h1></div>
+								<div class="listing_info_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
+									<div class="listing_info d-flex flex-row align-items-center justify-content-start">
+										<div class="listing_rating">{{ movie.vote_average }}</div>
+										<div class="listing_price">{{ movie.original_language }}</div>
+										<!--<div class="listing_type"></div>-->
+										<div class="listing_status">{{ movie.genre }}</div>
+									</div>
+									<div class="listin_info_options d-flex flex-row align-items-start justify-content-start ml-lg-auto">
+										<div class="listing_info_button listing_info_button_1"><a href="#reviews">Write a review</a></div>
+										<div class="listing_info_button listing_info_button_2"><a href="#" onclick="alert('서비스 준비 중입니다.')">Get Tickets</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Listing -->
+
+		<div class="listing">
+			<div class="container">
+				<div class="row">
+					
+					<!-- Listing Content -->
+					<div class="col-lg-8">
+						<div class="listing_content">
+							<div class="section_title"><h1>{{ movie.original_title }}</h1></div>
+							<div class="listing_text">
+								<p class="korean" style="font-size:17px;">{{ movie.overview }}</p>
+							</div>
+
+							<!-- Accordions -->
+							<div class="accordions">
+
+								<!-- Accordion -->
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div><strong>Release Date | </strong>{{ movie.release_date }}</div></div>
+									<div class="accordion_panel">
+										<div>
+											<p><strong>Release Date | </strong>{{ movie.release_date }}</p>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue.</p>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Accordion -->
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div><strong>Original Language | </strong>{{ movie.original_language }}</div></div>
+									<div class="accordion_panel">
+										<div>
+											<p><strong>Original Language | </strong>{{ movie.original_language }}</p>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue.</p>
+										</div>
+									</div>
+								</div>
+
+								<!-- Accordion -->
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div>Mauris diam augue, aliquam ut accumsan at, dignissim</div></div>
+									<div class="accordion_panel">
+										<div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan dolor id enim lacinia, sed feugiat ex suscipit. Nunc molestie malesuada pellentesque. Quisque mattis ante ut nisl tristique ornare. Aenean interdum dictum augue.</p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<!-- Reviews -->
+							<div class="reviews" id='reviews'>
+								<div class="section_title"><h1>{{ movie.comment_set.count }} Reviews</h1></div>
+								<div class="reviews_container">
+									
+									<div class="review d-flex flex-lg-row flex-column align-items-start justify-content-start">
+										<div class="review_user_container">
+											<div>
+												<div class="review_user d-flex flex-lg-column flex-row align-items-center justify-content-start">
+													<div class="review_user_image"><img src="{% static 'movies/images/user_3.jpg' %}" alt=""></div>
+													<div class="text-lg-center">
+														<div class="review_user_name"><a href="#">{{ user }}</a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="review_content">
+											<!--<div class="review_title_container d-flex flex-row align-items-start justify-content-start">-->
+											<!--	<div class="review_title">"{{ comment.content }}"</div>-->
+											<!--	<div class="review_rating ml-auto">{{ comment.score }}</div>-->
+											<!--</div>-->
+											<!--<div class="review_text">-->
+											<!--	<p>Great place to visit, the food is awesome, I really love it. I would recommend it to other people.</p>-->
+											<!--</div>-->
+											{% if user.is_authenticated %}
+									            
+								                <form action="{% url 'movies:create_comment' movie.pk %}" method="POST" style="display:inline;">
+								                {% csrf_token %}
+												  <div class="form-group">
+												    <input type="number" class="form-control" placeholder="평점" name="score" min=1 max=10>
+												    <small class="form-text text-muted">select between 1 to 10</small>
+												  </div>
+												  <div class="form-group">
+												    <input type="text" class="form-control" placeholder="코멘트" name="content">
+												  </div>
+												  <button type="submit" value="submit" class="btn btn-outline-secondary btn-sm border-0">Submit</button>
+												</form>
+									            
+									        {% else %}
+									            <a href="{% url 'accounts:login' %}">댓글을 작성하려면 로그인하세요.</a> 
+									       	{% endif %}
+										</div>
+									</div>
+									
+								{% for comment in movie.comment_set.all %}
+									<!-- Review -->
+									<div class="review d-flex flex-lg-row flex-column align-items-start justify-content-start">
+										<div class="review_user_container">
+											<div>
+												<div class="review_user d-flex flex-lg-column flex-row align-items-center justify-content-start">
+													<div class="review_user_image"><img src="https://s.gravatar.com/avatar/{{ comment.user_img }}?s=200" alt=""></div>
+													<div class="text-lg-center">
+														<div class="review_user_name"><a href="{% url 'people' comment.user.username %}">{{ comment.user }}</a></div>
+														<div class="review_count"><a href="#">5 reviews</a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="review_content korean">
+											<div class="review_title_container d-flex flex-row align-items-start justify-content-start">
+												<div class="review_title">"{{ comment.content }}"</div>
+												<div class="review_rating ml-auto">{{ comment.score }}</div>
+											</div>
+											<div class="review_text">
+												{% if user == comment.user %}
+													<button value="Update" class="btn btn-outline-warning btn-sm border-0" data-toggle="modal" data-target="#exampleModal{{comment.pk}}" data-whatever="@mdo">update</button>
+													{% include 'movies/_comment_modal.html' %}
+									                <form action="{% url 'movies:delete_comment' movie.pk comment.pk %}" method="POST" style="display:inline;">
+									                    {% csrf_token %}
+									                    <button type="submit" value="Delete" class="btn btn-outline-danger btn-sm border-0">delete</button>
+									                </form>
+									            {% endif %}
+											</div>
+										</div>
+									</div>
+								{% empty %}
+									<p>no reviews yet</p>
+								{% endfor %}
+									<!-- Review -->
+									<!--<div class="review d-flex flex-lg-row flex-column align-items-start justify-content-start">-->
+									<!--	<div class="review_user_container">-->
+									<!--		<div>-->
+									<!--			<div class="review_user d-flex flex-lg-column flex-row align-items-center justify-content-start">-->
+									<!--				<div class="review_user_image"><img src="{% static 'images/user_3.jpg' %}" alt=""></div>-->
+									<!--				<div class="text-lg-center">-->
+									<!--					<div class="review_user_name"><a href="#">Maria Smith</a></div>-->
+									<!--					<div class="review_count"><a href="#">5 reviews</a></div>-->
+									<!--				</div>-->
+									<!--			</div>-->
+									<!--		</div>-->
+									<!--	</div>-->
+									<!--	<div class="review_content">-->
+									<!--		<div class="review_title_container d-flex flex-row align-items-start justify-content-start">-->
+									<!--			<div class="review_title">"I love it there"</div>-->
+									<!--			<div class="review_rating ml-auto">4,5</div>-->
+									<!--		</div>-->
+									<!--		<div class="review_text">-->
+									<!--			<p>Great place to visit, the food is awesome, I really love it. I would recommend it to other people.</p>-->
+									<!--		</div>-->
+									<!--	</div>-->
+									<!--</div>-->
+
+									<!-- Review -->
+									<!--<div class="review d-flex flex-lg-row flex-column align-items-start justify-content-start">-->
+									<!--	<div class="review_user_container">-->
+									<!--		<div>-->
+									<!--			<div class="review_user d-flex flex-lg-column flex-row align-items-center justify-content-start">-->
+									<!--				<div class="review_user_image"><img src="{% static 'images/user_4.jpg' %}" alt=""></div>-->
+									<!--				<div class="text-lg-center">-->
+									<!--					<div class="review_user_name"><a href="#">Maria Smith</a></div>-->
+									<!--					<div class="review_count"><a href="#">5 reviews</a></div>-->
+									<!--				</div>-->
+									<!--			</div>-->
+									<!--		</div>-->
+									<!--	</div>-->
+									<!--	<div class="review_content">-->
+									<!--		<div class="review_title_container d-flex flex-row align-items-start justify-content-start">-->
+									<!--			<div class="review_title">"Great place"</div>-->
+									<!--			<div class="review_rating ml-auto">4,5</div>-->
+									<!--		</div>-->
+									<!--		<div class="review_text">-->
+									<!--			<p>Great place to visit, the food is awesome, I really love it. I would recommend it to other people.</p>-->
+									<!--		</div>-->
+									<!--		<div class="review_images d-flex flex-row align-items-start justify-content-start flex-wrap">-->
+									<!--			<div class="review_image"><a class="colorbox" href="{% static 'images/review_1_large.jpg' %}"><img src="images/review_1.jpg" alt=""></a></div>-->
+									<!--			<div class="review_image"><a class="colorbox" href="{% static 'images/review_2_large.jpg' %}"><img src="images/review_2.jpg" alt=""></a></div>-->
+									<!--		</div>-->
+									<!--	</div>-->
+									<!--</div>-->
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Listing Sidebar -->
+					<div class="col-lg-4 sidebar_col">
+						<div class="sidebar">
+							
+							<!-- Work Hours -->
+							<div class="work_hours d-flex flex-row align-items-center justify-content-start">
+								<div class="closed">Popularity</div>
+								<div class="ml-auto">{{ movie.popularity }}</div>
+							</div>
+
+							<!-- Info -->
+							<!--<div class="sidebar_info">-->
+							<!--	<ul>-->
+							<!--		<li class="d-flex flex-row align-items-start justify-content-start">-->
+							<!--			<div class="sidebar_info_icon"><img src="{% static 'images/info_1.png' %}" alt=""></div>-->
+							<!--			<div class="sidebar_info_content"><span>Address: </span>Main Str, no 253, New York, NY</div>-->
+							<!--		</li>-->
+							<!--		<li class="d-flex flex-row align-items-start justify-content-start">-->
+							<!--			<div class="sidebar_info_icon"><img src="{% static 'images/info_2.png' %}" alt=""></div>-->
+							<!--			<div class="sidebar_info_content"><span>Phone: </span>+546 990221 123</div>-->
+							<!--		</li>-->
+							<!--		<li class="d-flex flex-row align-items-start justify-content-start">-->
+							<!--			<div class="sidebar_info_icon"><img src="{% static 'images/info_3.png' %}" alt=""></div>-->
+							<!--			<div class="sidebar_info_content"><span>E-mail: </span>restaurant@contact.com</div>-->
+							<!--		</li>-->
+							<!--	</ul>-->
+							<!--</div>-->
+							
+							
+							<!-- Info -->
+							<div class="sidebar_info">
+								<ul>
+									<li class="d-flex flex-row align-items-start justify-content-start">
+										<img src="{{ movie.poster_path }}"></img>
+									</li>
+								</ul>
+							</div>
+
+							<!-- Location -->
+							<!--<div class="location">-->
+							<!--	<div class="location_icon"><img src="{# static 'images/loc.png' #}" alt=""></div>-->
+
+								<!-- Google Map -->
+		
+							<!--	<div class="map">-->
+							<!--		<div id="google_map" class="google_map">-->
+							<!--			<div class="map_container">-->
+							<!--				<div id="map"></div>-->
+							<!--			</div>-->
+							<!--		</div>-->
+							<!--	</div>-->
+
+							<!--</div>-->
+
+							<!-- Similar Places -->
+							<div class="similar_places">
+								<div class="section_title"><h1>Backdrop</h1></div>
+								<div class="similar_places_container d-flex flex-lg-column flex-row align-items-start justify-content-between flex-wrap">
+									
+									<!-- Similar Place -->
+									<div class="similar_place">
+										<div class="similar_place_image">
+											<div class="location_icon"><a href="#"><img src="{% static 'movies/images/loc.png' %}" alt=""></a></div>
+											<div class="similar_place_rating">{{ movie.vote_average }}</div>
+											<img src="{{ movie.backdrop_path }}" alt="">
+										</div>
+										<div class="similar_place_title"><a href="#">{{ movie.original_title }}</a></div>
+									</div>
+									
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+		{% include 'movies/_footer.html' %}
+	</div>
+		
+</div>
+{% endblock %}
+
+<script src="{% static 'movies/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'movies/styles/bootstrap-4.1.2/popper.js' %}"></script>
+<script src="{% static 'movies/styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'movies/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'movies/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'movies/plugins/progressbar/progressbar.min.js' %}"></script>
+<script src="{% static 'movies/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'movies/plugins/colorbox/jquery.colorbox-min.js' %}"></script>
+<script src="{% static 'movies/js/listing.js' %}"></script>
+
+
+
+</body>
+</html>

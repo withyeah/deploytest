@@ -1,0 +1,44 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PopcornOverflow</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="DirectoryPlus template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+    <link href="{% static 'movies/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/plugins/OwlCarousel2-2.3.4/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/plugins/OwlCarousel2-2.3.4/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/plugins/OwlCarousel2-2.3.4/animate.css' %}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    
+    
+    {% block content %}
+    
+    {% endblock %}
+    
+    
+    <script src="{% static 'movies/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'movies/styles/bootstrap-4.1.2/popper.js' %}"></script>
+    <script src="{% static 'movies/styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/greensock/TweenMax.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/greensock/TimelineMax.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/greensock/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/OwlCarousel2-2.3.4/owl.carousel.js' %}"></script>
+    <script src="{% static 'movies/plugins/easing/easing.js' %}"></script>
+    <script src="{% static 'movies/plugins/progressbar/progressbar.min.js' %}"></script>
+    <script src="{% static 'movies/plugins/parallax-js-master/parallax.min.js' %}"></script>
+    <script src="{% static 'movies/js/custom.js' %}"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

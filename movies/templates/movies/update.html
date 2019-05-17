@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{ movie }}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="DirectoryPlus template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+<link href="{% static 'movies/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'movies/plugins/colorbox/colorbox.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/listing.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/listing_responsive.css' %}">
+</head>
+<body>
+
+<!-- Menu -->
+
+<div class="menu">
+	<div class="menu_container text-right">
+		<div class="menu_close">close</div>
+		<nav class="menu_nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="listings.html">Listings</a></li>
+				<li><a href="blog.html">News</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		<div class="menu_link">
+			<a href="#">+Add Listing</a>
+		</div>
+	</div>
+</div>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+		<div class="header_background"><div class="background_image" style="background-image:url({% static 'images/header.jpg' %})"></div></div>
+		<div class="header_overlay"></div>
+		<div class="header_content d-flex flex-row align-items-center justify-content-start">
+			
+			<!-- Logo -->
+			<div class="logo"><a href="#">Directory<span>Plus</span><span>+</span></a></div>
+
+			<!-- Header Nav -->
+			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
+				<nav class="main_nav">
+					<ul class="d-flex flex-row align-items-center justify-content-start">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="#">About us</a></li>
+						<li><a href="listings.html">Listings</a></li>
+						<li><a href="blog.html">News</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<div class="add_listing text-center trans_200"><a href="#">+Add Listing</a></div>
+				<div class="log_reg">
+					<ul class="d-flex flex-row align-items-center justify-content-start">
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Register</a></li>
+					</ul>
+				</div>
+				<div class="hamburger">
+					<i class="fa fa-bars trans_200"></i>
+				</div>
+			</div>
+
+		</div>
+	</header>
+
+	<div class="super_container_inner">
+		<div class="super_overlay"></div>
+
+		<!-- Home -->
+
+		<div class="home mt-5">
+			<div class="container fill_height">
+				<div class="row fill_height">
+					<div class="col fill_height mt-5">
+					    <h1 class="mt-5">댓글 수정</h1>
+					    <div class="mt-5">
+    					    
+					        
+					    </div>
+					    
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		
+				<!-- Footer -->
+
+		<footer class="footer container_custom">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="footer_container d-flex flex-md-row flex-column align-items-center justify-content-md-start justify-content-center">
+							<div class="copyright order-md-1 order-2"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</div>
+							<nav class="footer_nav ml-md-auto order-md-2 order-1">
+								<ul class="d-flex flex-row align-items-center justify-content-start">
+									<li><a href="index.html">Home</a></li>
+									<li><a href="#">About us</a></li>
+									<li><a href="listings.html">Listings</a></li>
+									<li><a href="blog.html">News</a></li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		
+	</div>
+		
+</div>
+
+<script src="{% static 'movies/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'movies/styles/bootstrap-4.1.2/popper.js' %}"></script>
+<script src="{% static 'movies/styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'movies/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'movies/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'movies/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'movies/plugins/progressbar/progressbar.min.js' %}"></script>
+<script src="{% static 'movies/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'movies/plugins/colorbox/jquery.colorbox-min.js' %}"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>-->
+<!--<script src="{# static 'movies/js/listing.js' #}"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+
+</body>
+</html>

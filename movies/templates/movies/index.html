@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'movies/styles/responsive.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Menu -->
+<div class="menu">
+	<div class="menu_container text-right">
+		<div class="menu_close">close</div>
+		<nav class="menu_nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="listings.html">Listings</a></li>
+				<li><a href="blog.html">News</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		<div class="menu_link">
+			<a href="#">+Add Listing</a>
+		</div>
+	</div>
+</div>
+<div class="super_container">
+	{% include 'movies/_nav.html' %}
+	
+	<div class="super_container_inner">
+		<div class="super_overlay"></div>
+
+		<!-- Home -->
+		{% include 'movies/_slide.html' %}
+		
+
+		<!-- Categories -->
+		{% include 'movies/_category.html' %}
+		
+
+		<!-- Boxoffice -->
+
+		<div id="boxoffice" class="locations container_custom">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center"><h1>In Theaters Now</h1></div>
+						<div class="locations_container d-flex flex-row align-items-start justify-content-between flex-wrap">
+							
+							<!-- Location -->
+							<div class="location">
+								<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/sPZxApU8d90Czd11S60UqOhuP9R.jpg" alt="">
+								<div class="location_title text-center"><div><a href="{% url 'movies:detail' 2 %}">샤잠!<div>+</div></a></div></div>
+							</div>
+
+							<!-- Location -->
+							<div class="location">
+								<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/n78LK2t1uQP68Ud0VXHRe0HmKOp.jpg" alt="">
+								<div class="location_title text-center"><div><a href="{% url 'movies:detail' 1 %}">어벤져스: 엔드게임<div>+</div></a></div></div>
+							</div>
+
+							<!-- Location -->
+							<div class="location">
+								<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Vb7PJ2aUzel5iQ6R2Jxe4MTWac.jpg" alt="">
+								<div class="location_title text-center"><div><a href="{% url 'movies:detail' 4 %}">명탐정 피카츄<div>+</div></a></div></div>
+							</div>
+
+							<!-- Location -->
+							<div class="location">
+								<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/gua7L4syuPUZeG35lpu5xvOzquH.jpg" alt="">
+								<div class="location_title text-center"><div><a href="{% url 'movies:detail' 10 %}">헬보이<div>+</div></a></div></div>
+							</div>
+
+							<!-- Location -->
+							<div class="location">
+								<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/4MDB6jJl3U7xK1Gw64zIqt9pQA4.jpg" alt="">
+								<div class="location_title text-center"><div><a href="{% url 'movies:detail' 22 %}">리틀<div>+</div></a></div></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Food -->
+
+		<div id="genre" class="food container_custom">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center"><h1>Explore by Genre</h1></div>
+						<div class="grid_container grid">
+							
+							<!-- Grid Item -->
+							<div class="grid-item grid_large">
+								<div class="food_item">
+									<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 28 %}">액션</a></div>
+									<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/original/lmZFxXgJE3vgrciwuDib0N8CfQo.jpg)"></div>
+								</div>
+							</div>
+
+							<!-- Grid Item -->
+							<div class="grid-item grid_small">
+								<div class="food_item">
+									<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 10749 %}">로맨스</a></div> 
+									<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/3l6wpIL6wiq593MnV3AhIhPjww2.jpg)"></div>
+								</div>
+							</div>
+
+							<!-- Grid Item -->
+							<div class="grid-item grid_medium">
+								<div>
+									<div class="grid_half">
+										<div class="food_item">
+											<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 14 %}">판타지</a></div>
+											<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/original/2cUsDz4TzFYHrKktT1bKHHQ7Cgm.jpg)"></div>
+										</div>
+									</div>
+									<div class="grid_half">
+										<div class="food_item">
+											<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 16 %}">애니메이션</a></div>
+											<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/w500_and_h282_face/aUVCJ0HkcJIBrTJYPnTXta8h9Co.jpg)"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Grid Item -->
+							<div class="grid-item grid_medium">
+								<div class="food_item">
+									<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 878 %}">SF</a></div>
+									<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/a1XTVjEiShbX1XE6Uvaho49gw3l.jpg)"></div>
+								</div>
+							</div>
+
+							<!-- Grid Item -->
+							<div class="grid-item grid_small">
+								<div class="food_item">
+									<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 53 %}">스릴러</a></div>
+									<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/yxdY0NaunKDNcpIUFhdgk9z9Y5r.jpg)"></div>
+								</div>
+							</div>
+
+							<!-- Grid Item -->
+							<div class="grid-item grid_large">
+								<div class="food_item">
+									<div class="food_item_tag"><a href="{% url 'movies:genre_listings' 35 %}">코미디</a></div>
+									<div class="background_image" style="background-image:url(https://image.tmdb.org/t/p/original/7gwIbnB2j45wSC3esSzkRzfwcws.jpg)"></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- How it works -->
+
+		<div class="how container_custom">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center"><h1>How Popcorn<span>Overflow+</span> works</h1></div>
+						<div class="icon_box_container d-flex flex-row align-items-start justify-content-between flex-wrap">
+							
+							<!-- Icon Box -->
+							<div class="icon_box d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="icon_box_num">01.</div>
+								<div class="icon_box_icon"><img src="{% static 'movies/images/icon_6.svg' %}" alt="https://www.flaticon.com/authors/monkik"></div>
+								<div class="icon_box_title">Tell us about you</div>
+								<div class="icon_box_text">
+									<p>Write reviews on your favorite movies and follow other people for your happy popcorn time.</p>
+								</div>
+							</div>
+
+							<!-- Icon Box -->
+							<div class="icon_box d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="icon_box_num">02.</div>
+								<div class="icon_box_icon"><img src="{% static 'movies/images/icon_7.svg' %}" alt="https://www.flaticon.com/authors/monkik"></div>
+								<div class="icon_box_title">Find your pick</div>
+								<div class="icon_box_text">
+									<p>Find the best movie that suits you. We recommend movies with our super cool recommendation engine.</p>
+								</div>
+							</div>
+
+							<!-- Icon Box -->
+							<div class="icon_box d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="icon_box_num">03.</div>
+								<div class="icon_box_icon"><img src="{% static 'movies/images/icon_8.svg' %}" alt="https://www.flaticon.com/authors/monkik"></div>
+								<div class="icon_box_title">Go & have fun</div>
+								<div class="icon_box_text">
+									<p>Happy popcorn time! Fetch your favorite popcorn, sit back, relax, have fun:)</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- CTA -->
+
+		<div class="cta container_custom">
+			<div class="parallax_background" data-image-src="{% static 'movies/images/background.jpg' %}"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="cta_content">
+							<div class="cta_title"><h1>Fetch your popcorn now!</h1></div>
+							<div class="cta_text">
+								<p>Donec cursus, risus non fermentum lacinia, felis lectus interdum velit, in pulvinar enim justo at sem. Quisque ut semper neque. Suspendisse quam est, consequat ullamcorper tellus et, fauci bus laoreet nibh.</p>
+							</div>
+							<div class="button cta_button"><a href="{% url 'people' user %}">Pop Corns</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- CTA 2 -->
+
+		<div class="cta_2">
+			<div class="container">
+				<div class="row row-lg-eq-height">
+					<div class="col-lg-9 cta_2_col">
+						<div class="cta_2_content">
+							<div class="cta_2_title"><h1>Get the Popcorn<span>Overflow+</span> App</h1></div>
+							<div class="cta_2_text">
+								<p>Donec cursus, risus non fermentum lacinia, felis lectus interdum velit, in pulvinar enim justo at sem. Quisque ut semper neque. Suspendisse quam est, consequat ullamcorper tellus et, fauci bus laoreet nibh.Donec cursus, risus non fermentum lacinia, felis lectus interdum velit, in pulvinar enim justo at sem.</p>
+							</div>
+							<div class="store_links d-flex flex-row align-items-start justify-content-start flex-wrap">
+								<div class="store_link"><a href="#"><img src="{% static 'movies/images/store_1.jpg' %}" alt=""></a></div>
+								<div class="store_link"><a href="#"><img src="{% static 'movies/images/store_2.jpg' %}" alt=""></a></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 cta_2_col">
+						<div class="cta_2_image">
+							<img src="{% static 'movies/images/cta_2.jpg' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Clients -->
+
+		<div class="clients">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+
+						<!-- Clients Slider -->
+						<div class="clients_slider_container">
+							<div class="owl-carousel owl-theme clients_slider">
+								
+								<!-- Slide -->
+								<div class="slide">
+									<div class="client_image"><a href="#"><img src="{% static 'movies/images/client_1.jpg' %}" alt=""></a></div>
+								</div>
+
+								<!-- Slide -->
+								<div class="slide">
+									<div class="client_image"><a href="#"><img src="{% static 'movies/images/client_2.jpg' %}" alt=""></a></div>
+								</div>
+
+								<!-- Slide -->
+								<div class="slide">
+									<div class="client_image"><a href="#"><img src="{% static 'movies/images/client_3.jpg' %}" alt=""></a></div>
+								</div>
+
+								<!-- Slide -->
+								<div class="slide">
+									<div class="client_image"><a href="#"><img src="{% static 'movies/images/client_4.jpg' %}" alt=""></a></div>
+								</div>
+
+								<!-- Slide -->
+								<div class="slide">
+									<div class="client_image"><a href="#"><img src="{% static 'movies/images/client_5.jpg' %}" alt=""></a></div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+
+		{% include 'movies/_footer.html' %}
+	</div>
+		
+</div>
+{% endblock %}
+
+
+
